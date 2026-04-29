@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Gallery</title>
+    <style>
+        .gallery-container { text-align: center; margin-top: 50px; }
+        #main-img { width: 600px; height: 400px; object-fit: cover; border-radius: 8px; }
+        .controls { margin-top: 20px; }
+        button { padding: 10px 20px; cursor: pointer; font-size: 16px; }
+    </style>
+</head>
+<body>
+
+<div class="gallery-container">
+    <img id="main-img" src="https://picsum.photos" alt="Gallery Image">
+    <div class="controls">
+        <button onclick="prevImg()">Назад</button>
+        <button onclick="nextImg()">Вперед</button>
+    </div>
+</div>
+
+<script>
+    const images = [
+        "https://picsum.photos",
+        "https://picsum.photos",
+        "https://picsum.photos"
+    ];
+    let currentIndex = 0;
+    const imgElement = document.getElementById('main-img');
+
+    function updateImage() {
+        imgElement.src = images[currentIndex];
+    }
+
+    function nextImg() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateImage();
+    }
+
+    function prevImg() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateImage();
+    }
+</script>
+
+</body>
+</html>
